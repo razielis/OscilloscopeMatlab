@@ -8,8 +8,8 @@ if strcmp(result,'TRIGGER')
     data=str2num(query(scope,'CURVE?'));
     xstep=str2double(query(scope,'WFMPre:xincr?'));
     ystep=str2double(query(scope,'WFMPre:ymult?'));
-    plot(app.UIAxes,(0:2499)*xstep,data*ystep);
-    app.CountEditField.Value =app.CountEditField.Value +1;
+    app.waveform = [(0:(length(data)-1))*xstep;data*ystep];
+    plot(app.UIAxes,app.waveform(1,:),app.waveform(2,:))
 else
     app.TriggerLamp.Color = [1,0,0];
 end
