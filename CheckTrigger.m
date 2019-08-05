@@ -8,8 +8,9 @@ if strcmp(result,'TRIGGER')
     data=str2num(query(scope,'CURVE?'));
     xstep=str2double(query(scope,'WFMPre:xincr?'));
     ystep=str2double(query(scope,'WFMPre:ymult?'));
+    app.xstep = xstep;
     app.waveform = [(0:(length(data)-1))*xstep;data*ystep];
-    plot(app.UIAxes,app.waveform(1,:),app.waveform(2,:))
+    app.DrawFigure;
 else
     app.TriggerLamp.Color = [1,0,0];
 end
